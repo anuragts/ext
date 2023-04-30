@@ -12,6 +12,14 @@ export async function activate(context: vscode.ExtensionContext) {
 
     const lang = editor.document.languageId;
 
+////
+
+
+const document = await vscode.workspace.openTextDocument(vscode.Uri.file(editor.document.uri.fsPath))
+
+const code = (document.getText())
+
+    ///
     const diagnostics = vscode.languages.getDiagnostics(editor.document.uri);
 
     interface Diagnostic {
@@ -26,7 +34,7 @@ export async function activate(context: vscode.ExtensionContext) {
       console.log(err[0].message);
     });
 
-    const res = await getDetails(err, lang); // pass err array to getDetails
+    const res = await getDetails(err, lang,code); // pass err array to getDetails
 
     await vscode.window.showInformationMessage(`${res}`);
   });
