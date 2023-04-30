@@ -15,7 +15,7 @@ export async function activate(context: vscode.ExtensionContext) {
     const text = editor.document.getText(editor.selection);
 
     const lang = editor.document.languageId;
-
+    
     console.log(lang);
 
     const res = await getDetails(text,lang);
