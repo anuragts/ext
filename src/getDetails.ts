@@ -1,7 +1,11 @@
 import axios from "axios";
 import { openAi } from "./config/openAi.config";
 
-export default async function getDetails(text:string,language:string) {
+interface Diagnostic {
+  message: string;
+}
+
+export default async function getDetails(text:Diagnostic[],language:string) {
   const response = await openAi.createCompletion({
     model: "text-davinci-003",
     prompt:
