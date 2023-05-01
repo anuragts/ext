@@ -6,6 +6,17 @@ interface Diagnostic {
 }
 
 export default async function getDetails(err:Diagnostic[],language:string,code:string) {
+
+  console.log(err);
+
+  if(!code){
+    return 'No code found'
+  }
+
+  if(!err){
+    return 'No error found'
+  }
+
   const response = await openAi.createCompletion({
     model: "text-davinci-003",
     prompt:
